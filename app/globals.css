@@ -1,0 +1,899 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ===== GLOBAL RESET & BASE STYLES ===== */
+/* Resets default browser styles and sets up base configuration */
+:root {
+  --font-poppins: "Poppins", sans-serif;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins), sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* For Chrome, Edge, Safari */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== NAVBAR STYLES ===== */
+/* Fixed navigation bar that stays at the top of the viewport */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.8rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* Transparent navbar when at the top of the page */
+.navbar.transparent {
+  background-color: transparent;
+}
+
+/* Semi-transparent black navbar when scrolled down */
+.navbar.scrolled {
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+/* Company logo styling with brand colors */
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+/* Electric blue color for "ALPHANUEL" part of logo */
+.navbar-logo span {
+  color: #00a8ff;
+}
+
+/* Navigation links container */
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+/* Individual navigation link styling */
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 200;
+  transition: color 0.3s ease;
+  position: relative;
+  text-transform: uppercase;
+}
+
+/* Animated underline effect for nav links */
+.navbar-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00a8ff;
+  transition: width 0.3s ease;
+}
+
+/* Hover state for navigation links */
+.navbar-links a:hover {
+  color: #00a8ff;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile hamburger menu toggle button */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+/* Hamburger menu bars */
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* ===== HERO SECTION STYLES ===== */
+/* Full-screen hero section with background image overlay */
+.hero {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/hero-pic.webp") center / cover no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+
+  /* linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), */
+}
+
+/* Hero content container with fade-in animation */
+.hero-content {
+  max-width: 800px;
+  padding: 2rem;
+  animation: fadeInUp 1s ease;
+}
+
+/* Main hero heading */
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Electric blue accent for "Excellence" */
+.hero h1 span {
+  color: #00a8ff;
+}
+
+/* Hero subheading text */
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+/* Call-to-action button in hero section */
+.hero-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background-color: #00a8ff;
+  color: #333;
+  text-decoration: none;
+  border-radius: 15px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(35, 171, 239, 0.3);
+}
+
+/* Hover effect for hero button with lift animation */
+.hero-btn:hover {
+  background-color: transparent;
+  border: 1.5px solid #00a8ff;
+  color: #fff;
+  transform: translateY(-1px);
+  animation: all ease-in-out 0.3s;
+  /* box-shadow: 0 6px 20px rgba(0, 168, 255, 0.5); */
+}
+
+/* ===== ABOUT SECTION STYLES ===== */
+/* About section with light gray background */
+.about {
+  padding: 6rem 5%;
+  background-color: #f8f9fa;
+}
+
+/* Two-column grid layout for about content and image */
+.about-container {
+  max-width: 950px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* About text content with fade-in animation on scroll */
+.about-content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+/* Visible state triggered by intersection observer */
+.about-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section title styling used across multiple sections */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1a1a2e;
+}
+
+/* Electric blue accent for section titles */
+.section-title span {
+  color: #00a8ff;
+}
+
+/* About section paragraph text */
+.about-text {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* About section image with slide-in animation */
+.about-image {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.8s ease;
+}
+
+/* Visible state for about image */
+.about-image.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== SERVICES SECTION STYLES ===== */
+/* Services section with white background */
+.services {
+  padding: 2rem 5%;
+  background-color: white;
+}
+
+/* Services container with centered content */
+.services-container {
+  max-width: 950px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Responsive grid for service cards */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+/* Individual service card with hover effects */
+.service-card {
+  background: white;
+  padding: 1rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  border: 2px solid transparent;
+}
+
+/* Visible state for service cards */
+.service-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover effect lifts card and adds blue border */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
+  border-color: #00a8ff;
+}
+
+/* Circular icon container with gradient background */
+.service-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, #00a8ff, #0088cc);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+}
+
+/* Service card title */
+.service-card h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #1a1a2e;
+}
+
+/* Service card description text */
+.service-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+/* ===== GALLERY SECTION STYLES ===== */
+/* Gallery section with light gray background */
+.gallery {
+  padding: 2rem 5%;
+  background-color: #f8f9fa;
+}
+
+/* Gallery container with centered content */
+.gallery-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Responsive grid for gallery images */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+
+  /* NEW: make only 6 images visible at once and enable scrolling */
+  max-height: 550px; /* adjust based on how tall 6 images are on your layout */
+  overflow-y: auto;
+  padding-right: 10px; /* prevents scrollbar overlap */
+  scrollbar-width: thin;
+}
+
+/* Optional - style the scrollbar (for better UI) */
+.gallery-grid::-webkit-scrollbar {
+  width: 5px;
+}
+
+.gallery-grid::-webkit-scrollbar-track {
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+.gallery-grid::-webkit-scrollbar-thumb {
+  background-color: #00a8ff;
+  border-radius: 4px;
+}
+
+/* Individual gallery item with zoom effect on hover */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+  height: 230px;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.2);
+  transition: all 0.3s ease;
+}
+
+/* Visible state for gallery items */
+.gallery-item.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Gallery image styling */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Zoom effect on hover */
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Blue overlay that appears on hover */
+.gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(141, 181, 201, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Show overlay on hover */
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* Magnifying glass icon in overlay */
+.gallery-overlay span {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* ===== LIGHTBOX STYLES ===== */
+/* Full-screen lightbox for viewing gallery images */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Active state shows lightbox */
+.lightbox.active {
+  display: flex;
+}
+
+/* Lightbox image styling */
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+/* Close button for lightbox */
+.lightbox-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 2001;
+}
+
+/* Hover effect for close button */
+.lightbox-close:hover {
+  color: #00a8ff;
+}
+
+/* Previous/Next navigation buttons */
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  transform: translateY(-50%);
+  background: rgba(0, 168, 255, 0.8);
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  /* padding: 1rem 1.5rem; */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2001;
+  border-radius: 50%;
+}
+
+/* Previous button positioned on left side */
+.lightbox-prev {
+  left: 2rem;
+}
+
+/* Next button positioned on right side */
+.lightbox-next {
+  right: 2rem;
+}
+
+/* Hover effect for navigation buttons */
+.lightbox-nav:hover {
+  background: transparent;
+  border: 1px solid #00a8ff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Image counter display */
+.lightbox-counter {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 2001;
+}
+
+/* ===== CONTACT/FOOTER SECTION STYLES ===== */
+/* Contact section with dark gradient background */
+.contact {
+  padding: 2rem 5%;
+  background: #333;
+  color: #fff;
+}
+
+/* Contact container with centered content */
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Grid layout for contact information cards */
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+/* Individual contact information item */
+.contact-item {
+  padding: 1.5rem;
+  border: 1px solid #00a8ff;
+  border-radius: 15px;
+}
+
+/* SECTION TITLE (Get in Touch) */
+.contact .section-title-2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #00a8ff;
+  text-transform: uppercase;
+  position: relative;
+}
+.contact .about-text {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #fff;
+  position: relative;
+}
+
+/* Contact item heading with blue accent */
+.contact-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #00a8ff;
+}
+
+/* Contact item text and links */
+.contact-item p,
+.contact-item a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for contact links */
+.contact-item a:hover {
+  color: #00a8ff;
+}
+
+/* Social media links container */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Individual social media icon button */
+.social-links a {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover effect for social icons */
+.social-links a:hover {
+  background: #00a8ff;
+  transform: translateY(-5px);
+}
+
+/* Back to top section styling */
+.back-to-top {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 0.5px solid #00a8ff;
+}
+
+/* Back to top link styling */
+.back-to-top a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for back to top link */
+.back-to-top a:hover {
+  color: #00a8ff;
+}
+
+/* ===== ANIMATIONS ===== */
+/* Fade in and slide up animation for hero content */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+/* Tablet and mobile styles */
+@media (max-width: 768px) {
+  /* Adjust navbar padding for smaller screens */
+  .navbar {
+    padding: 1rem 5%;
+  }
+
+  /* Mobile menu slides in from right side */
+  .navbar-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease;
+  }
+
+  /* Active state shows mobile menu */
+  .navbar-links.active {
+    right: 0;
+  }
+
+  /* Show hamburger menu on mobile */
+  .menu-toggle {
+    display: flex;
+    z-index: 1001;
+  }
+
+  /* Smaller hero heading on mobile */
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  /* Smaller hero text on mobile */
+  .hero p {
+    font-size: 1.1rem;
+  }
+
+  /* Stack about section vertically on mobile */
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Smaller about image on mobile */
+  .about-image {
+    height: 300px;
+  }
+
+  /* Smaller section titles on mobile */
+  .section-title {
+    font-size: 2rem;
+  }
+
+  /* Single column for services on mobile */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single column for gallery on mobile */
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single column for contact info on mobile */
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  /* Smaller navigation buttons on mobile */
+  .lightbox-nav {
+    font-size: 1.5rem;
+    padding: 0.75rem 1rem;
+  }
+
+  /* Position buttons closer to edges on mobile */
+  .lightbox-prev {
+    left: 1rem;
+  }
+
+  .lightbox-next {
+    right: 1rem;
+  }
+
+  /* Smaller close button on mobile */
+  .lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+  }
+
+  /* Smaller counter on mobile */
+  .lightbox-counter {
+    bottom: 1rem;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  /* Even smaller hero heading */
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  /* Even smaller hero text */
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Even smaller section titles */
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
