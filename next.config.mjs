@@ -6,6 +6,7 @@ const nextConfig = {
   images: { unoptimized: true },
   trailingSlash: true,
   // Only use basePath/assetPrefix when deploying to GitHub Pages
+
   basePath: isGithubPages ? "/alphanuel-construction" : "",
   assetPrefix: isGithubPages ? "/alphanuel-construction/" : "",
 };
