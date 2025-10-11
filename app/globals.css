@@ -132,8 +132,8 @@ html {
 
 body {
   font-family: var(--font-poppins), sans-serif;
-  line-height: 1.6;
-  color: #333;
+  line-height: 1.5;
+  color: #333333;
   overflow-x: hidden;
 }
 
@@ -308,7 +308,7 @@ body::-webkit-scrollbar {
 /* ===== ABOUT SECTION STYLES ===== */
 /* About section with light gray background */
 .about {
-  padding: 6rem 5%;
+  padding: 3rem 5%;
   background-color: #f8f9fa;
 }
 
@@ -318,7 +318,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 2rem;
   align-items: center;
 }
 
