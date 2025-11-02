@@ -61,7 +61,7 @@ export default function Navbar() {
       {/* Logo image — clicking scrolls to top */}
       <a href="#" className="navbar-logo" onClick={handleLogoClick}>
         <Image
-          src="/logo-blue-3.png" // path from public folder
+          src="/alphanuel-complete-logo.png" // path from public folder
           alt="Alphanuel Construction Logo"
           width={100} // adjust as needed
           height={70} // adjust as needed

@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 interface GalleryImage {
   src: string; // Image source URL
   alt: string; // Alternative text for accessibility
+  category: string; // Category field for each image
 }
 
 /**
@@ -27,68 +28,126 @@ export default function Gallery() {
   // State to control lightbox visibility
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // Add state for filtering by category
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   /**
    * Array of gallery images showcasing completed projects
    */
   const images: GalleryImage[] = [
     {
+      src: "ba-k-1.png",
+      alt: "Residential Project",
+      category: "Kitchen",
+    },
+    {
+      src: "ba-k-2.png",
+      alt: "Residential Project",
+      category: "Kitchen",
+    },
+    {
       src: "gallery1.jpeg",
       alt: "Residential Project",
+      category: "Kitchen",
     },
     {
       src: "gallery2.jpeg",
       alt: "Commercial Project",
+      category: "Kitchen",
     },
     {
       src: "gallery3.jpeg",
       alt: "Interior Design",
+      category: "Kitchen",
     },
     {
       src: "gallery4.jpeg",
       alt: "Renovation Project",
+      category: "Kitchen",
     },
     {
       src: "gallery5.jpeg",
       alt: "Electrical Work",
+      category: "Kitchen",
     },
     {
       src: "gallery6.jpeg",
       alt: "Office Building",
+      category: "Kitchen",
+    },
+    {
+      src: "ba-c-1.png",
+      alt: "Office Building",
+      category: "closet",
+    },
+    {
+      src: "ba-c-2.png",
+      alt: "Office Building",
+      category: "closet",
     },
     {
       src: "gallery7.jpeg",
       alt: "Office Building",
+      category: "closet",
     },
     {
       src: "gallery8.jpeg",
       alt: "Office Building",
+      category: "closet",
     },
     {
       src: "gallery9.jpeg",
       alt: "Office Building",
+      category: "closet",
     },
     {
       src: "gallery10.jpeg",
       alt: "Office Building",
+      category: "closet",
+    },
+    {
+      src: "ba-b-1.png",
+      alt: "Office Building",
+      category: "bathroom",
+    },
+    {
+      src: "ba-b-2.png",
+      alt: "Office Building",
+      category: "bathroom",
     },
     {
       src: "gallery11.jpeg",
       alt: "Office Building",
+      category: "bathroom",
     },
     {
       src: "gallery12.jpeg",
       alt: "Office Building",
+      category: "bathroom",
     },
     {
       src: "gallery13.jpeg",
       alt: "Office Building",
+      category: "bathroom",
     },
     {
       src: "gallery14.jpeg",
       alt: "Office Building",
+      category: "bathroom",
     },
   ];
+
+  // Get all unique categories from images
+  const categories = [
+    "All",
+    ...Array.from(new Set(images.map((img) => img.category))),
+  ];
+
+  // Filter images to display based on selected category
+  const filteredImages =
+    selectedCategory === "All"
+      ? images
+      : images.filter((img) => img.category === selectedCategory);
 
   useEffect(() => {
     /**
@@ -147,11 +206,10 @@ export default function Gallery() {
   }, [lightboxOpen]);
 
   /**
-   * Opens lightbox with selected image
-   * @param index - Index of the image in the images array
+   * Opens lightbox at the filtered image index
    */
-  const openLightbox = (index: number) => {
-    setCurrentImageIndex(index);
+  const openLightbox = (filteredIndex: number) => {
+    setCurrentImageIndex(filteredIndex);
     setLightboxOpen(true);
   };
 
@@ -163,19 +221,20 @@ export default function Gallery() {
   };
 
   /**
-   * Navigate to the previous image in the gallery
-   * Wraps around to last image if at the beginning
+   * Lightbox navigation: previous, wraps to end
    */
   const navigatePrevious = () => {
-    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? filteredImages.length - 1 : prev - 1
+    );
   };
-
   /**
-   * Navigate to the next image in the gallery
-   * Wraps around to first image if at the end
+   * Lightbox navigation: next, wraps to start
    */
   const navigateNext = () => {
-    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    setCurrentImageIndex((prev) =>
+      prev === filteredImages.length - 1 ? 0 : prev + 1
+    );
   };
 
   return (
@@ -190,9 +249,27 @@ export default function Gallery() {
             Explore our portfolio of completed construction projects
           </p>
 
-          {/* Grid of gallery images */}
+          {/* CATEGORY FILTER BUTTONS */}
+          <div
+            className="gallery-categories"
+            style={{ marginBottom: "2rem", textAlign: "center" }}
+          >
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`gallery-category-btn${
+                  category === selectedCategory ? " active" : ""
+                }`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid of gallery images, NOW FILTERED */}
           <div className="gallery-grid" ref={itemsRef}>
-            {images.map((image, index) => (
+            {filteredImages.map((image, index) => (
               <div
                 key={index}
                 className="gallery-item"
@@ -225,12 +302,12 @@ export default function Gallery() {
         onClick={(e) => {
           // Close lightbox when clicking on dark background (not the image)
           if (e.target === e.currentTarget) {
-            closeLightbox();
+            setLightboxOpen(false);
           }
         }}
       >
-        {/* Close button (X) in top-right corner */}
-        <span className="lightbox-close" onClick={closeLightbox}>
+        {/* Close button (X) */}
+        <span className="lightbox-close" onClick={() => setLightboxOpen(false)}>
           &times;
         </span>
 
@@ -243,8 +320,8 @@ export default function Gallery() {
         </button>
 
         <img
-          src={images[currentImageIndex].src || "/placeholder.svg"}
-          alt={images[currentImageIndex].alt}
+          src={filteredImages[currentImageIndex]?.src || "/placeholder.svg"}
+          alt={filteredImages[currentImageIndex]?.alt}
         />
 
         <button
@@ -256,7 +333,9 @@ export default function Gallery() {
         </button>
 
         <div className="lightbox-counter">
-          {currentImageIndex + 1} / {images.length}
+          {filteredImages.length > 0
+            ? `${currentImageIndex + 1} / ${filteredImages.length}`
+            : "0 / 0"}
         </div>
       </div>
     </>

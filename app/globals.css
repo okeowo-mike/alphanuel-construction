@@ -181,7 +181,7 @@ body::-webkit-scrollbar {
 
 /* Electric blue color for "ALPHANUEL" part of logo */
 .navbar-logo span {
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 /* Navigation links container */
@@ -209,13 +209,13 @@ body::-webkit-scrollbar {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #00a8ff;
+  background-color: #00bcd4;
   transition: width 0.3s ease;
 }
 
 /* Hover state for navigation links */
 .navbar-links a:hover {
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 .navbar-links a:hover::after {
@@ -272,7 +272,7 @@ body::-webkit-scrollbar {
 
 /* Electric blue accent for "Excellence" */
 .hero h1 span {
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 /* Hero subheading text */
@@ -286,7 +286,7 @@ body::-webkit-scrollbar {
 .hero-btn {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background-color: #00a8ff;
+  background-color: #00bcd4;
   color: #333;
   text-decoration: none;
   border-radius: 15px;
@@ -298,7 +298,7 @@ body::-webkit-scrollbar {
 /* Hover effect for hero button with lift animation */
 .hero-btn:hover {
   background-color: transparent;
-  border: 1.5px solid #00a8ff;
+  border: 1.5px solid #00bcd4;
   color: #fff;
   transform: translateY(-1px);
   animation: all ease-in-out 0.3s;
@@ -345,7 +345,7 @@ body::-webkit-scrollbar {
 
 /* Electric blue accent for section titles */
 .section-title span {
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 /* About section paragraph text */
@@ -419,7 +419,7 @@ body::-webkit-scrollbar {
 .service-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 10px 30px rgba(0, 168, 255, 0.2);
-  border-color: #00a8ff;
+  border-color: #00bcd4;
 }
 
 /* Circular icon container with gradient background */
@@ -427,7 +427,7 @@ body::-webkit-scrollbar {
   width: 80px;
   height: 80px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, #00a8ff, #0088cc);
+  background: linear-gradient(135deg, #00bcd4, #0088cc);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -489,7 +489,7 @@ body::-webkit-scrollbar {
 }
 
 .gallery-grid::-webkit-scrollbar-thumb {
-  background-color: #00a8ff;
+  background-color: #00bcd4;
   border-radius: 4px;
 }
 
@@ -592,7 +592,7 @@ body::-webkit-scrollbar {
 
 /* Hover effect for close button */
 .lightbox-close:hover {
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 /* Previous/Next navigation buttons */
@@ -626,7 +626,7 @@ body::-webkit-scrollbar {
 /* Hover effect for navigation buttons */
 .lightbox-nav:hover {
   background: transparent;
-  border: 1px solid #00a8ff;
+  border: 1px solid #00bcd4;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -671,7 +671,7 @@ body::-webkit-scrollbar {
 /* Individual contact information item */
 .contact-item {
   padding: 1.5rem;
-  border: 1px solid #00a8ff;
+  border: 1px solid #00bcd4;
   border-radius: 15px;
 }
 
@@ -680,7 +680,7 @@ body::-webkit-scrollbar {
   font-size: 2.5rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #00a8ff;
+  color: #00bcd4;
   text-transform: uppercase;
   position: relative;
 }
@@ -695,7 +695,7 @@ body::-webkit-scrollbar {
 .contact-item h3 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 /* Contact item text and links */
@@ -708,7 +708,7 @@ body::-webkit-scrollbar {
 
 /* Hover effect for contact links */
 .contact-item a:hover {
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 /* Social media links container */
@@ -736,7 +736,7 @@ body::-webkit-scrollbar {
 
 /* Hover effect for social icons */
 .social-links a:hover {
-  background: #00a8ff;
+  background: #00bcd4;
   transform: translateY(-5px);
 }
 
@@ -744,7 +744,7 @@ body::-webkit-scrollbar {
 .back-to-top {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 0.5px solid #00a8ff;
+  border-top: 0.5px solid #00bcd4;
 }
 
 /* Back to top link styling */
@@ -760,7 +760,7 @@ body::-webkit-scrollbar {
 
 /* Hover effect for back to top link */
 .back-to-top a:hover {
-  color: #00a8ff;
+  color: #00bcd4;
 }
 
 /* ===== ANIMATIONS ===== */
@@ -896,4 +896,27 @@ body::-webkit-scrollbar {
   .section-title {
     font-size: 1.8rem;
   }
+}
+
+.gallery-category-btn {
+  padding: 0.5rem 2rem;
+  margin: 0 0.5rem 0.9rem 0;
+  border-radius: 5px;
+  border: none;
+  background: #eee;
+  color: #333;
+  font-weight: normal;
+  cursor: pointer;
+  /* transition: background 0.2s, color 0.2s, transform 0.1s; */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.gallery-category-btn.active {
+  background: #00bcd4;
+  color: #fff;
+}
+
+.gallery-category-btn:hover {
+  border: 1px #00bcd4 solid;
 }
